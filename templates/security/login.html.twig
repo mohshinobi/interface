@@ -1,0 +1,89 @@
+{% extends 'loginbase.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+ 
+<div id="grouplogin">
+    <div class="main">
+    <div class="container">
+<center>
+ 
+    {% if error %}
+        <div class="alert alert-danger" style="width:500px;margin:30px auto;display:block;">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+ 
+    {% if app.user %}
+        <div class="alert alert-success" style="width:500px;margin:30px auto;display:block;">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}" class="text-danger text-decoration-none"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</a>
+        </div>
+    {% endif %}
+<div class="middle">
+      <div id="login">
+
+        <form  method="POST">
+
+          <fieldset class="clearfix">
+
+            <p ><span class="fa fa-user"></span><input type="text"  value="{{ last_username }}" placeholder="Username" name="username" id="inputUsername" autocomplete="username"  required autofocus></p> <!-- JS because of IE support; better: placeholder="Username" -->
+            <p><span class="fa fa-lock"></span><input type="password"  name="password" id="inputPassword" placeholder="Password" autocomplete="current-password" required></p> <!-- JS because of IE support; better: placeholder="Password" -->
+               <p> <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" ></p>
+             <div>            
+                <span style="width:50%; text-align:right;  display: inline-block;"><input type="submit" value="Sign In"></span>
+            </div>
+
+          </fieldset>
+        <div class="clearfix"></div>
+        </form>
+
+        <div class="clearfix"></div>
+
+      </div> <!-- end login -->
+      <div class="logo">LOGO
+          
+          <div class="clearfix"></div>
+      </div>
+      
+      </div>
+</center>
+    </div>
+
+</div>
+</div>
+{# 
+<div class="container mt-5 w-25">  
+<form method="post">
+    
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+ 
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <div class="form-group mb-3">
+    <label for="inputUsername">Username</label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" autocomplete="username"  required autofocus  class="form-control"  >
+    </div>
+    <div class="form-group mb-3">
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword"  autocomplete="current-password" required class="form-control">
+    </div>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+ 
+<div class="form-group mb-3">
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+  </div>
+</form>
+</div >  #}
+{% endblock %}

@@ -1,17 +1,36 @@
 security:
+    password_hashers:
+        App\Entity\User: auto
     # https://symfony.com/doc/current/security/experimental_authenticators.html
     enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory: { memory: null }
+        users:
+            entity:
+                # the class of the entity that represents users
+                class: 'App\Entity\User'
+                # the property to query by - e.g. username, email, etc
+                property: username
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+            security: true
         main:
             lazy: true
-            provider: users_in_memory
-
+            provider: users
+            custom_authenticator: App\Security\LoginAuthenticator
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                csrf_parameter: _csrf_security_token
+                csrf_token_id: a_private_string
+                failure_path: app_login
+            entry_point: form_login
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                target: app_login
+            anonymous: false      
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
@@ -20,6 +39,8 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
-    access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+    access_control: 
+         - { path: ^/user, roles: ROLE_ADMIN }
+         - { path: ^/register, roles: ROLE_ADMIN }
+         - { path: ^/links, roles: ROLE_ADMIN }
+         - { path: ^/home, roles: [ROLE_USER, ROLE_ADMIN] } 

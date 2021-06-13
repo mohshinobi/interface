@@ -1,0 +1,40 @@
+{% extends 'navigation.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+{% set btn = "btn-1" %}
+<div class="container w-100">
+    <ul class="nav-admin " >
+        {% if is_granted("ROLE_ADMIN") %} 
+          <li> <a  href="{{ path("app_register") }}"> <i class="fas fa-users"></i>&nbsp; Register</a></li>
+          <li> <a  href="{{ path("links_index") }}"> <i class="fas fa-link"></i>&nbsp; Links</a></li>
+          <li> <a  href="{{ path("user_index") }}"> <i class="fas fa-users"></i>&nbsp; Users</a></li> 
+        {% endif %}
+        <li> <a  href="{{ path("app_logout") }}"> <i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a></li> 
+    </ul>
+</div> 
+
+<div class="container">
+<section class="buttons" style="margin-top:150px;">
+
+    <ul class="list-nav">   
+   
+      <li><a href="{{   path("python", { slug: "script1.py"})  }}" class="btn {{ btn }}" target="_blank"> <svg> <rect x="0" y="0" fill="none" width="100%" height="100%"/> </svg><i class="fas fa-shield-alt"></i>&nbsp; Firewalling </a></li>
+      <li><a href="{{   path("python", { slug: "script1.py"})  }}" class="btn {{ btn }}" target="_blank"> <svg> <rect x="0" y="0" fill="none" width="100%" height="100%"/> </svg><i class="fas fa-shield-alt"></i>&nbsp; Proxy / Reverse Proxy </a></li>
+
+      <li><a href="{{   path("python", { slug: "script1.py"})  }}" class="btn {{ btn }}" target="_blank"> <svg> <rect x="0" y="0" fill="none" width="100%" height="100%"/> </svg><i class="fas fa-shield-alt"></i>&nbsp; IPS / IDS </a></li>
+      <li><a href="{{   path("python", { slug: "script1.py"})  }}" class="btn {{ btn }}" target="_blank"> <svg> <rect x="0" y="0" fill="none" width="100%" height="100%"/> </svg><i class="fas fa-shield-alt"></i>&nbsp; Antivirus </a></li>
+
+      <li><a href="{{   path("python", { slug: "script1.py"})  }}" class="btn {{ btn }}" target="_blank"> <svg> <rect x="0" y="0" fill="none" width="100%" height="100%"/> </svg><i class="fas fa-shield-alt"></i>&nbsp; Honey Pot </a></li>
+      <li><a href="{{   path("python", { slug: "script1.py"})  }}" class="btn {{ btn }}" target="_blank"> <svg> <rect x="0" y="0" fill="none" width="100%" height="100%"/> </svg><i class="fas fa-shield-alt"></i>&nbsp; SandBoxing </a></li>
+
+      <li><a href="{{   path("python", { slug: "script1.py"})  }}" class="btn {{ btn }}" target="_blank"> <svg> <rect x="0" y="0" fill="none" width="100%" height="100%"/> </svg><i class="fas fa-shield-alt"></i>&nbsp; Vulnerability Scan </a></li>
+      <li><a href="{{   path("python", { slug: "script1.py"})  }}" class="btn {{ btn }}" target="_blank"> <svg> <rect x="0" y="0" fill="none" width="100%" height="100%"/> </svg><i class="fas fa-shield-alt"></i>&nbsp; Scanning </a></li>
+
+    </ul>
+ 
+</section>
+</div> 
+ 
+{% endblock %}

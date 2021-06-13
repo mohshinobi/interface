@@ -1,0 +1,13 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}New Links{% endblock %}
+
+{% block body %}
+<div class="container mt-5"> 
+    <h1>Create new Links</h1>
+
+    {{ include('links/_form.html.twig') }}
+
+    <a href="{{ path('links_index') }}">back to list</a>
+</div>
+{% endblock %}
