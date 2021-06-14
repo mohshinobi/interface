@@ -11,7 +11,7 @@ class UserFixture extends Fixture
 {
     private  $passwordEncoder;
     public function __construct(UserPasswordHasherInterface $passwordEncoder){
-         $this->passwordEncoder = $$passwordEncoder ;
+         $this->passwordEncoder = $passwordEncoder ;
     }
     public function load(ObjectManager $manager)
     {
@@ -19,7 +19,7 @@ class UserFixture extends Fixture
         $user->setUsername('admin');
         $user->setRole('ROLE_ADMIN');
         $user->setEmail('email@email.com');
-        $user->setPassword( $passwordEncoder->hashPassword($user, "123456") );
+        $user->setPassword(  $this->passwordEncoder->hashPassword($user, "123456") );
         $manager->persist($user);
         $manager->flush();
 

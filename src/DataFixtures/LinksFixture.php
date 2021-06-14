@@ -26,7 +26,7 @@ class LinksFixture extends Fixture
     }
     public function load(ObjectManager $manager)
     {
-     foreach ($buttons as  $value) {
+     foreach ($this->buttons as  $value) {
         $link = new Links();
         $link->setName($value["name"]);
         $link->setAlt($value["alt"]);
