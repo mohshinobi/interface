@@ -372,7 +372,7 @@ class Links
         358=> 'fa-rocket'                              ,
         359=> 'fa-fire-extinguisher'                   ,
         360=> 'fa-calendar-o'                          ,
-        361=> 'fa-shield'                              ,
+        361=> 'fa-shield-alt'                          ,
         362=> 'fa-microphone-slash'                    ,
         363=> 'fa-microphone'                          ,
         364=> 'fa-puzzle-piece'                        ,

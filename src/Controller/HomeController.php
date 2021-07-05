@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\LinksRepository;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,12 +19,13 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */ 
-    public function index(): Response
+    public function index( LinksRepository $linksRepository): Response
     {
         if ($this->security->isGranted('ROLE_SUPER_ADMIN') || $this->security->isGranted('ROLE_ADMIN') || $this->security->isGranted('ROLE_USER') ) {
          
         return $this->render('index.html.twig', [
             'controller_name' => 'HomeController',
+            'links' => $linksRepository->findAll(),
         ]);
         }else{
          return $this->redirectToRoute("app_login");
