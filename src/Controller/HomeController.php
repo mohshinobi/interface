@@ -24,7 +24,7 @@ class HomeController extends AbstractController
         if ($this->security->isGranted('ROLE_SUPER_ADMIN') || $this->security->isGranted('ROLE_ADMIN') || $this->security->isGranted('ROLE_USER') ) {
          
         return $this->render('index.html.twig', [
-            'controller_name' => 'HomeController',
+            'title' => 'Navigation',
             'links' => $linksRepository->findAll(),
         ]);
         }else{
